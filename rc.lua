@@ -53,6 +53,12 @@ terminal = "st"
 editor = os.getenv("EDITOR") or "nano"
 webbrowser = os.getenv("BROWSER") or "brave"
 editor_cmd = terminal .. " -e " .. editor
+home_dir = os.getenv("HOME")
+dwmmode = home_dir.."/.local/bin/dwmmode/"
+power_q = dwmmode.."q"
+power_w = dwmmode.."w"
+power_e = dwmmode.."e"
+power_r = dwmmode.."r"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -258,10 +264,23 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    -- TODO: 
+
+    awful.key({ modkey,            }, "q", function () awful.spawn(power_q) end,
+              {description = "Launch power action q", group = "client"}),
+    awful.key({ modkey,            }, "w", function () awful.spawn(power_w) end,
+              {description = "Launch power action w", group = "client"}),
+    awful.key({ modkey,            }, "e", function () awful.spawn(power_e) end,
+              {description = "Launch power action e", group = "client"}),
+    awful.key({ modkey,            }, "r", function () awful.spawn(power_r) end,
+              {description = "Launch power action r", group = "client"}),
+    awful.key({ modkey, "Shift"    }, "Tab", function () awful.spawn("change_mode") end,
+              {description = "Launch web browser", group = "client"}),
+
     awful.key({ modkey, "Shift"    }, "w", function () awful.spawn(webbrowser) end,
               {description = "Launch web browser", group = "client"}),
 
+    awful.key({ modkey, "Shift"    }, "e", function () awful.spawn(editor_cmd) end,
+              {description = "Launch neovim", group = "client"}),
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
@@ -488,18 +507,25 @@ awful.rules.rules = {
             keys = clientkeys,
             buttons = clientbuttons }
     },
-    { rule = { instance = "cairo-dock" },
+
+    -- specific tags
+    { rule = { instance = "discord-screenaudio" },
         --      type = "dock",
         properties = {
-            -- floating = true,
-            -- ontop = true,
-            dockable = true,
-            -- -- hidden = true,
-            -- -- transient_for = {},
-            focusable = false,
-            valid = true
-            -- focus = false
-        } 
+            tag = "9"
+        }
+    },
+    { rule = { instance = "brave-browser" },
+        --      type = "dock",
+        properties = {
+            tag = "1"
+        }
+    },
+    { rule = { instance = "REAPER" },
+        --      type = "dock",
+        properties = {
+            tag = "6"
+        }
     },
 
     -- Floating clients.
