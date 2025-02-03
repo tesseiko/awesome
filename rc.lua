@@ -510,19 +510,21 @@ awful.rules.rules = {
 
     -- specific tags
     { rule = { instance = "discord-screenaudio" },
-        --      type = "dock",
         properties = {
             tag = "9"
         }
     },
     { rule = { instance = "brave-browser" },
-        --      type = "dock",
         properties = {
             tag = "1"
         }
     },
+    { rule = { instance = "Mail" },
+        properties = {
+            tag = "2"
+        }
+    },
     { rule = { instance = "REAPER" },
-        --      type = "dock",
         properties = {
             tag = "6"
         }
