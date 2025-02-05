@@ -29,7 +29,7 @@ viber_scratch = bling.module.scratchpad {
     command = "viber",           -- How to spawn the scratchpad
     rule = { instance = "viber" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
-    autoclose = true,                                 -- Whether it should hide itself when losing focus
+    autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x_1, y=y_1, height=h_1, width=w_1}, -- The geometry in a floating state
     reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
@@ -40,7 +40,7 @@ signal_scratch = bling.module.scratchpad {
     command = "signal-desktop",           -- How to spawn the scratchpad
     rule = { instance = "signal" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
-    autoclose = true,                                 -- Whether it should hide itself when losing focus
+    autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x_1, y=y_1, height=h_1, width=w_1 - 320}, -- The geometry in a floating state
     reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
@@ -51,7 +51,7 @@ telegram_scratch = bling.module.scratchpad {
     command = "telegram-desktop",           -- How to spawn the scratchpad
     rule = { instance = "telegram-desktop" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
-    autoclose = true,                                 -- Whether it should hide itself when losing focus
+    autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x_1, y=y_1, height=h_1, width=w_1}, -- The geometry in a floating state
     reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
@@ -62,7 +62,7 @@ messenger_scratch = bling.module.scratchpad {
     command = "messenger",           -- How to spawn the scratchpad
     rule = { instance = "messenger" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
-    autoclose = true,                                 -- Whether it should hide itself when losing focus
+    autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x_1+320, y=y_1, height=h_1, width=w_1-320}, -- The geometry in a floating state
     reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
