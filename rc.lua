@@ -182,7 +182,9 @@ awful.screen.connect_for_each_screen(function(s)
     awful.spawn.with_shell("setbg")
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[2])
+    local lays = awful.layout.layouts
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s,
+        {lays[2], lays[2], lays[12], lays[2], lays[2], lays[2], lays[2], lays[2], lays[2]})
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -385,6 +387,12 @@ clientkeys = gears.table.join(
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
+    awful.key({ modkey, "Control", "Shift"  }, 'space', function (c) awful.titlebar.toggle(c) end,
+        {description = 'toggle title bar', group = 'client'}),
+
+
+    -- awful.key({ modkey, "Control", "Shift"   }, "space",  function (c) c:swap(awful.client.getmaster()) end,
+    --           {description = "toggle sticky", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "i",      function (c) c:move_to_screen()               end,
