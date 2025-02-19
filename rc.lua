@@ -311,6 +311,8 @@ globalkeys = gears.table.join(
         {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Control", "Shift"   }, "BackSpace", awesome.quit,
         {description = "quit awesome", group = "awesome"}),
+    awful.key({ modkey, "Control"  }, "BackSpace", function () awful.spawn("sysact") end,
+        {description = "sysact menu", group = "awesome"}),
 
     awful.key({ modkey, "Shift"   }, "Return", function () term_scratch:toggle() end,
         {description = "open a floating terminal", group = "launcher"}),
