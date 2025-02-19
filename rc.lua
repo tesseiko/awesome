@@ -320,7 +320,7 @@ globalkeys = gears.table.join(
         {description = "open viber", group = "launcher"}),
     awful.key({ modkey,           }, "apostrophe", function () signal_scratch:toggle() end,
         {description = "open signal", group = "launcher"}),
-    awful.key({ modkey,           }, "backslash", function () telegram_scratch:toggle() end,
+    awful.key({ modkey,           }, "backslash", function () discord_call:toggle() end,
         {description = "open telegram", group = "launcher"}),
     awful.key({ modkey, "Shift"   }, "backslash", function () messenger_scratch:toggle() end,
         {description = "open messenger", group = "launcher"}),
@@ -496,6 +496,8 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 -- }}}
 
+local s_width = awful.screen.focused().geometry.width
+local s_height = awful.screen.focused().geometry.height
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
@@ -511,6 +513,19 @@ awful.rules.rules = {
             placement = awful.placement.no_overlap+awful.placement.no_offscreen
         }
     },
+    {
+        rule = { class = "vesktop",
+        name = "Popout"},
+        properties = {
+            floating = true,
+            geometry = {x=s_width - 400, y=85, 320, 180}, -- The geometry in a floating state
+            width = 320,
+            height = 180,
+            ontop = true,
+            opacity = 0.5,
+            focusable = false,
+        }
+    },
     { rule = { } , except = { instance = "cairo-dock" },
         properties = { border_width = beautiful.border_width,
             border_color = beautiful.border_normal,
@@ -520,7 +535,7 @@ awful.rules.rules = {
     },
 
     -- specific tags
-    { rule = { instance = "discord-screenaudio" },
+    { rule = { instance = "vesktop" },
         properties = {
             tag = "9"
         }
