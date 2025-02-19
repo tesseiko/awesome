@@ -26,8 +26,8 @@ term_scratch = bling.module.scratchpad {
 }
 
 viber_scratch = bling.module.scratchpad {
-    command = "viber",           -- How to spawn the scratchpad
-    rule = { instance = "viber" },                     -- The rule that the scratchpad will be searched by
+    command = "viber || flatpak run com.viber.Viber",           -- How to spawn the scratchpad
+    rule = { instance = "Viber" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
     autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
