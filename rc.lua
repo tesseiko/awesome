@@ -518,7 +518,7 @@ awful.rules.rules = {
         name = "Popout"},
         properties = {
             floating = true,
-            geometry = {x=s_width - 400, y=85, 320, 180}, -- The geometry in a floating state
+            geometry = {x=s_width - 320 - 15, y=s_height - 45 - 180, 320, 180}, -- The geometry in a floating state
             width = 320,
             height = 180,
             ontop = true,
