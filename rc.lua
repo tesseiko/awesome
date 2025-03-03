@@ -283,9 +283,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey,            }, "e", function () awful.spawn(power_e) end,
               {description = "Launch power action e", group = "client"}),
     awful.key({ modkey,            }, "r", function () awful.spawn(power_r) end,
-              {description = "Launch power action r", group = "client"}),
-    awful.key({ modkey, "Shift"    }, "Tab", function () awful.spawn("change_mode") end,
-              {description = "Launch web browser", group = "client"}),
+              {description = "Launch power action r", group = "client "}),
+    awful.key({ modkey, "Shift"    }, "Tab", function () awful.spawn("change_mode && show_mode_actions") end,
+              {description = "Change current power mode", group = "client"}),
+
+    awful.key({ modkey,  "Control" }, "q", function () awful.spawn("change_mode && show_mode_actions") end,
+              {description = "Change current power mode", group = "client"}),
+    awful.key({ modkey,  "Control" }, "w", function () awful.spawn("show_mode_actions") end,
+              {description = "Show current power actions", group = "client"}),
 
     awful.key({ modkey, "Shift"    }, "w", function () awful.spawn(webbrowser) end,
               {description = "Launch web browser", group = "client"}),
