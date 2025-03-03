@@ -405,9 +405,16 @@ clientkeys = gears.table.join(
     awful.key({ modkey, "Control", "Shift"  }, 'space', function (c) awful.titlebar.toggle(c) end,
         {description = 'toggle title bar', group = 'client'}),
 
+    awful.key({ modkey, "Control" }, "backslash", function (c)
+        c.sticky = not c.sticky
+    end,
+        {description = "toggle sticky", group = "client"}),
 
-    -- awful.key({ modkey, "Control", "Shift"   }, "space",  function (c) c:swap(awful.client.getmaster()) end,
-    --           {description = "toggle sticky", group = "client"}),
+    awful.key({ modkey,           }, "=",      function (c) c.opacity = c.opacity + 0.1               end,
+              {description = "adjust opacity", group = "client"}),
+
+    awful.key({ modkey,           }, "-",      function (c) c.opacity = c.opacity - 0.1               end,
+              {description = "adjust opacity", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "i",      function (c) c:move_to_screen()               end,
