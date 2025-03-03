@@ -268,6 +268,14 @@ globalkeys = gears.table.join(
         {description = "focus previous by index", group = "client"}
     ),
 
+    awful.key({}, "F9", function () awful.spawn("dunstctl close") end,
+              {description = "Dismiss notification", group = "client"}),
+    awful.key({}, "F10", function () awful.spawn("dunstctl action") end,
+              {description = "Click notification", group = "client"}),
+    awful.key({}, "F11", function () awful.spawn("dunstctl history-pop") end,
+              {description = "Notification history", group = "client"}),
+    awful.key({}, "F12", function () awful.spawn("dunstctl close-all") end,
+              {description = "Dismiss all notifications", group = "client"}),
     awful.key({ modkey,            }, "q", function () awful.spawn(power_q) end,
               {description = "Launch power action q", group = "client"}),
     awful.key({ modkey,            }, "w", function () awful.spawn(power_w) end,
