@@ -533,19 +533,19 @@ awful.rules.rules = {
             placement = awful.placement.no_overlap+awful.placement.no_offscreen
         }
     },
-    {
-        rule = { class = "vesktop",
-        name = "Popout"},
-        properties = {
-            floating = true,
-            geometry = {x=s_width - 320 - 15, y=s_height - 45 - 180, 320, 180}, -- The geometry in a floating state
-            width = 320,
-            height = 180,
-            ontop = true,
-            opacity = 0.5,
-            focusable = false,
-        }
-    },
+    -- {
+    --     rule = { class = "vesktop",
+    --     name = "Popout"},
+    --     properties = {
+    --         floating = true,
+    --         geometry = {x=s_width - 320 - 15, y=s_height - 45 - 180, 320, 180}, -- The geometry in a floating state
+    --         width = 320,
+    --         height = 180,
+    --         ontop = true,
+    --         opacity = 0.5,
+    --         focusable = false,
+    --     }
+    -- },
     { rule = { } , except = { instance = "cairo-dock" },
         properties = { border_width = beautiful.border_width,
             border_color = beautiful.border_normal,
