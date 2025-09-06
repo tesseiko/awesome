@@ -28,7 +28,8 @@ discord_call = bling.module.scratchpad {
     dont_focus_before_close  = true,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
 }
 term_scratch = bling.module.scratchpad {
-    command = "st -n spad",           -- How to spawn the scratchpad
+    -- command = "xrdb -merge ~/.Xresources && st -n spad",           -- How to spawn the scratchpad
+    command = "st -n spad -f ComicMono:style=Normal:size=11:antialias=true:hinting=false:autohint=false",           -- How to spawn the scratchpad
     rule = { instance = "spad" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
     autoclose = true,                                 -- Whether it should hide itself when losing focus
@@ -40,7 +41,7 @@ term_scratch = bling.module.scratchpad {
 
 viber_scratch = bling.module.scratchpad {
     command = "viber || flatpak run com.viber.Viber",           -- How to spawn the scratchpad
-    rule = { instance = "Viber" },                     -- The rule that the scratchpad will be searched by
+    rule = { instance = "viber" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
     autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
@@ -50,7 +51,7 @@ viber_scratch = bling.module.scratchpad {
 }
 
 signal_scratch = bling.module.scratchpad {
-    command = "signal-desktop",           -- How to spawn the scratchpad
+    command = "signal-desktop --password-store=\"kwallet6\"",           -- How to spawn the scratchpad
     rule = { instance = "signal" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
     autoclose = false,                                 -- Whether it should hide itself when losing focus

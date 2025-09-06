@@ -51,7 +51,7 @@ beautiful.useless_gap = 3
 -- This is used later as the default terminal and editor to run.
 terminal = "st"
 editor = os.getenv("EDITOR") or "nano"
-webbrowser = os.getenv("BROWSER") or "brave"
+webbrowser = os.getenv("BROWSER --password-store=\"kwallet6\"") or "brave --password-store=\"kwallet6\""
 editor_cmd = terminal .. " -e " .. editor
 home_dir = os.getenv("HOME")
 dwmmode = home_dir.."/.local/bin/dwmmode/"
@@ -211,6 +211,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
+    -- s.mywibox = awful.wibar({ position = "top", screen = s, height=40, fontsize = 20})
     s.mywibox = awful.wibar({ position = "top", screen = s, fontsize = 20})
 
     -- Add widgets to the wibox
@@ -268,6 +269,16 @@ globalkeys = gears.table.join(
         {description = "focus previous by index", group = "client"}
     ),
 
+    awful.key({ modkey,            }, "F9", function () awful.spawn("xbacklight - 1") end,
+              {description = "Decrease backlight", group = "Device"}),
+    awful.key({ modkey,  "Shift"   }, "F9", function () awful.spawn("xbacklight - 10") end,
+              {description = "Decrease backlight", group = "Device"}),
+
+    awful.key({ modkey,            }, "F10", function () awful.spawn("xbacklight + 1") end,
+              {description = "Increase backlight", group = "Device"}),
+    awful.key({ modkey,  "Shift"   }, "F10", function () awful.spawn("xbacklight + 10") end,
+              {description = "Increase backlight", group = "Device"}),
+
     awful.key({}, "F9", function () awful.spawn("dunstctl close") end,
               {description = "Dismiss notification", group = "client"}),
     awful.key({}, "F10", function () awful.spawn("dunstctl action") end,
@@ -305,6 +316,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+              {description = "focus the previous screen", group = "screen"}),
+    awful.key({ modkey, "Control", "Shift"}, "j", function () awful.screen.focus_relative( 1) end,
+              {description = "focus the next screen", group = "screen"}),
+    awful.key({ modkey, "Control", "Shift" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
@@ -410,10 +425,10 @@ clientkeys = gears.table.join(
     end,
         {description = "toggle sticky", group = "client"}),
 
-    awful.key({ modkey,           }, "=",      function (c) c.opacity = c.opacity + 0.1               end,
+    awful.key({ modkey,           }, "=",      function (c) c.opacity = c.opacity + 0.01               end,
               {description = "adjust opacity", group = "client"}),
 
-    awful.key({ modkey,           }, "-",      function (c) c.opacity = c.opacity - 0.1               end,
+    awful.key({ modkey,           }, "-",      function (c) c.opacity = c.opacity - 0.01               end,
               {description = "adjust opacity", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
