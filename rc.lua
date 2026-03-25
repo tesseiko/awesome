@@ -173,8 +173,13 @@ local function set_wallpaper(s)
     end
 end
 
+local function my_wallpaper(s)
+    awful.spawn.with_shell("setbg")
+end
+
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
+screen.connect_signal("property::geometry", my_wallpaper)
+-- screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -253,8 +258,8 @@ globalkeys = gears.table.join(
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "l",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
-              {description = "go back", group = "tag"}),
+    -- awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+    --           {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -269,14 +274,14 @@ globalkeys = gears.table.join(
         {description = "focus previous by index", group = "client"}
     ),
 
-    awful.key({ modkey,            }, "F9", function () awful.spawn("xbacklight - 1") end,
+    awful.key({ modkey,            }, "F9", function () awful.spawn("brightnessctl s 1%-") end,
               {description = "Decrease backlight", group = "Device"}),
-    awful.key({ modkey,  "Shift"   }, "F9", function () awful.spawn("xbacklight - 10") end,
+    awful.key({ modkey,  "Shift"   }, "F9", function () awful.spawn("brightnessctl s 10%-") end,
               {description = "Decrease backlight", group = "Device"}),
 
-    awful.key({ modkey,            }, "F10", function () awful.spawn("xbacklight + 1") end,
+    awful.key({ modkey,            }, "F10", function () awful.spawn("brightnessctl s 1%+") end,
               {description = "Increase backlight", group = "Device"}),
-    awful.key({ modkey,  "Shift"   }, "F10", function () awful.spawn("xbacklight + 10") end,
+    awful.key({ modkey,  "Shift"   }, "F10", function () awful.spawn("brightnessctl s 10%+") end,
               {description = "Increase backlight", group = "Device"}),
 
     awful.key({}, "F9", function () awful.spawn("dunstctl close") end,
@@ -291,6 +296,8 @@ globalkeys = gears.table.join(
               {description = "Launch power action q", group = "client"}),
     awful.key({ modkey,            }, "w", function () awful.spawn(power_w) end,
               {description = "Launch power action w", group = "client"}),
+    awful.key({ modkey,           }, "p",      function (c) awful.spawn("secondScreen") end,
+              {description = "manage hdmi screen", group = "launcher"}),
     awful.key({ modkey,            }, "e", function () awful.spawn(power_e) end,
               {description = "Launch power action e", group = "client"}),
     awful.key({ modkey,            }, "r", function () awful.spawn(power_r) end,
@@ -313,6 +320,8 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
+    awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end,
+              {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
@@ -436,6 +445,7 @@ clientkeys = gears.table.join(
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
+
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
@@ -443,6 +453,8 @@ clientkeys = gears.table.join(
             c.minimized = true
         end ,
         {description = "minimize", group = "client"}),
+    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+              {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized = not c.maximized
@@ -517,11 +529,11 @@ clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
     end),
-    awful.button({ modkey }, 1, function (c)
+    awful.button({ modkey,  "Control" }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
         awful.mouse.client.move(c)
     end),
-    awful.button({ modkey }, 3, function (c)
+    awful.button({ modkey }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
         awful.mouse.client.resize(c)
     end)
@@ -585,9 +597,19 @@ awful.rules.rules = {
             tag = "2"
         }
     },
-    { rule = { instance = "REAPER" },
+    -- { rule = { instance = "REAPER" },
+    --     properties = {
+    --         tag = "6"
+    --     }
+    -- },
+    { rule = { instance = "Mixer" },
         properties = {
-            tag = "6"
+            tag = "5"
+        }
+    },
+    { rule = { instance = "Docker" },
+        properties = {
+            tag = "5"
         }
     },
 
