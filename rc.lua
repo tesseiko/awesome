@@ -274,14 +274,19 @@ globalkeys = gears.table.join(
         {description = "focus previous by index", group = "client"}
     ),
 
-    awful.key({ modkey,            }, "F9", function () awful.spawn("brightnessctl s 1%-") end,
-              {description = "Decrease backlight", group = "Device"}),
-    awful.key({ modkey,  "Shift"   }, "F9", function () awful.spawn("brightnessctl s 10%-") end,
+    --- backlight
+    --- XF86MonBrightnessDown
+    --- XF86MonBrightnessUp
+    awful.key({                    }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl s 1%-") end,
               {description = "Decrease backlight", group = "Device"}),
 
-    awful.key({ modkey,            }, "F10", function () awful.spawn("brightnessctl s 1%+") end,
+    awful.key({                    }, "XF86MonBrightnessUp", function () awful.spawn("brightnessctl s 1%+") end,
               {description = "Increase backlight", group = "Device"}),
-    awful.key({ modkey,  "Shift"   }, "F10", function () awful.spawn("brightnessctl s 10%+") end,
+
+    awful.key({          "Shift"   }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl s 10%-") end,
+              {description = "Decrease backlight", group = "Device"}),
+
+    awful.key({          "Shift"   }, "XF86MonBrightnessUp", function () awful.spawn("brightnessctl s 10%+") end,
               {description = "Increase backlight", group = "Device"}),
 
     awful.key({}, "F9", function () awful.spawn("dunstctl close") end,
@@ -292,6 +297,7 @@ globalkeys = gears.table.join(
               {description = "Notification history", group = "client"}),
     awful.key({}, "F12", function () awful.spawn("dunstctl close-all") end,
               {description = "Dismiss all notifications", group = "client"}),
+
     awful.key({ modkey,            }, "q", function () awful.spawn(power_q) end,
               {description = "Launch power action q", group = "client"}),
     awful.key({ modkey,            }, "w", function () awful.spawn(power_w) end,
