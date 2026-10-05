@@ -365,8 +365,10 @@ globalkeys = gears.table.join(
         {description = "open signal", group = "launcher"}),
     awful.key({ modkey,           }, "backslash", function () discord_call:toggle() end,
         {description = "open telegram", group = "launcher"}),
-    awful.key({ modkey, "Shift"   }, "backslash", function () messenger_scratch:toggle() end,
-        {description = "open messenger", group = "launcher"}),
+    awful.key({ modkey,  "Shift"  }, "backslash", function () leo_ai_brave:toggle() end,
+        {description = "open telegram", group = "launcher"}),
+    -- awful.key({ modkey, "Shift"   }, "backslash", function () messenger_scratch:toggle() end,
+    --     {description = "open messenger", group = "launcher"}),
 
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),

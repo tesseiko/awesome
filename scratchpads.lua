@@ -27,15 +27,28 @@ discord_call = bling.module.scratchpad {
     reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
     dont_focus_before_close  = true,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
 }
+
+leo_ai_brave = bling.module.scratchpad {
+    -- command = "xrdb -merge ~/.Xresources && st -n spad",           -- How to spawn the scratchpad
+    command = "/opt/brave-bin/brave --profile-directory=Default --app-id=mhjlinlodpaobapodefbliknmjhpcahl",           -- How to spawn the scratchpad
+    rule = { instance = "crx_mhjlinlodpaobapodefbliknmjhpcahl" },                     -- The rule that the scratchpad will be searched by
+    sticky = false,                                    -- Whether the scratchpad should be sticky
+    autoclose = false,                                 -- Whether it should hide itself when losing focus
+    floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
+    geometry = {x=x, y=y, height=h, width=w}, -- The geometry in a floating state
+    reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
+    dont_focus_before_close  = false,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
+}
+
 term_scratch = bling.module.scratchpad {
     -- command = "xrdb -merge ~/.Xresources && st -n spad",           -- How to spawn the scratchpad
     command = "st -n spad -f ComicMono:style=Normal:size=11:antialias=true:hinting=false:autohint=false",           -- How to spawn the scratchpad
     rule = { instance = "spad" },                     -- The rule that the scratchpad will be searched by
     sticky = true,                                    -- Whether the scratchpad should be sticky
-    autoclose = true,                                 -- Whether it should hide itself when losing focus
+    autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x, y=y, height=h, width=w}, -- The geometry in a floating state
-    reapply = false,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
+    reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
     dont_focus_before_close  = false,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
 }
 
@@ -46,7 +59,7 @@ viber_scratch = bling.module.scratchpad {
     autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x_1, y=y_1, height=h_1, width=w_1}, -- The geometry in a floating state
-    reapply = false,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
+    reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
     dont_focus_before_close  = false,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
 }
 
@@ -57,7 +70,7 @@ signal_scratch = bling.module.scratchpad {
     autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x_1, y=y_1, height=h_1, width=w_1 - 320}, -- The geometry in a floating state
-    reapply = false,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
+    reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
     dont_focus_before_close  = false,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
 }
 
@@ -68,7 +81,7 @@ telegram_scratch = bling.module.scratchpad {
     autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x_1, y=y_1, height=h_1, width=w_1}, -- The geometry in a floating state
-    reapply = false,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
+    reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
     dont_focus_before_close  = false,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
 }
 
@@ -79,7 +92,7 @@ messenger_scratch = bling.module.scratchpad {
     autoclose = false,                                 -- Whether it should hide itself when losing focus
     floating = true,                                  -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
     geometry = {x=x_1+320, y=y_1, height=h_1, width=w_1-320}, -- The geometry in a floating state
-    reapply = false,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
+    reapply = true,                                   -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
     dont_focus_before_close  = false,                 -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
 }
 
