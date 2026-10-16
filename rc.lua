@@ -240,6 +240,15 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+client.connect_signal("property::floating", function(c)
+    if not c.fullscreen then
+        if c.floating then
+            c.ontop = true
+        else
+            c.ontop = false
+        end
+    end
+end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
